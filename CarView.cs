@@ -19,12 +19,12 @@ public class CarView : MonoBehaviour {
 	void Update (){
 		if (carModel.SpaceDown () && ! smoking) {
 			smoking = true;
-			smokeEmitter.Play ();
-			smokeSound.Play ();
+			//smokeEmitter.Play ();
+			//smokeSound.Play ();
 		} else if (smoking) {
 			smoking = false;
-			smokeEmitter.Pause ();
-			smokeSound.Stop ();
+			//smokeEmitter.Pause ();
+			//smokeSound.Stop ();
 		}
 	}
 }

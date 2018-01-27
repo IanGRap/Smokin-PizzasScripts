@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour {
 
 	CarModel carModel;
-	CarView carView;
+	//CarView carView;
 
 	bool spaceDown = false;
 	float spaceEnter;
@@ -19,6 +19,7 @@ public class CarController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		setupCommands ();
+		carModel = GetComponent <CarModel> ();
 	}
 	
 	// Update is called once per frame
@@ -57,15 +58,15 @@ public class CarController : MonoBehaviour {
 		if(checkForIdenticalCommands(command,leftCommand)){
 			command.Clear ();
 			//return "left";
-			CarModel.direction("left"); //assuming this is just taking a string input
+			carModel.setDirection("left"); //assuming this is just taking a string input
 		}
 		if(checkForIdenticalCommands(command,leftCommand)){
 			command.Clear ();
-			CarModel.direction("right");
+			carModel.setDirection("right");
 		}
 		if(checkForIdenticalCommands(command,leftCommand)){
 			command.Clear ();
-			CarModel.direction("straight");
+			carModel.setDirection("straight");
 		}
 		command.Clear ();
 	}
