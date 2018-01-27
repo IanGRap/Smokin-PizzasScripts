@@ -56,16 +56,16 @@ public class CarController : MonoBehaviour {
 	//Takes 4 inputs and figures out if it is a command
 	void determineCommand(){
 		if(checkForIdenticalCommands(command,leftCommand)){
-			command.Clear ();
+			//command.Clear ();
 			//return "left";
 			carModel.setDirection("left"); //assuming this is just taking a string input
 		}
-		if(checkForIdenticalCommands(command,leftCommand)){
-			command.Clear ();
+		if(checkForIdenticalCommands(command,rightCommand)){
+			//command.Clear ();
 			carModel.setDirection("right");
 		}
-		if(checkForIdenticalCommands(command,leftCommand)){
-			command.Clear ();
+		if(checkForIdenticalCommands(command,straightCommand)){
+			//command.Clear ();
 			carModel.setDirection("straight");
 		}
 		command.Clear ();
