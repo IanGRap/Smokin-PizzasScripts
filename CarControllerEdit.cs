@@ -133,17 +133,19 @@ public class CarController : MonoBehaviour {
 			setupCommand (straightCommand);
 			checkLoop ();
 		}
+		 // adding a few more loops that check left and right, checking to see if that effects the randomness
 		if (checkForIdenticalCommands (leftCommand, rightCommand))
 		{
 			setupCommand(leftCommand);
 			checkLoop();
 		}
-		if (checkForIdenticalCommands (leftCommand, rightCommand))
+		if (checkForIdenticalCommands (rightCommand, leftCommand))
 		{
 			setupCommand(rightCommand);
 			checkLoop();
 			
 		}
+		//
 	}
 
 	//Prints out an array
