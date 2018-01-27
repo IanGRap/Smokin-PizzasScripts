@@ -11,7 +11,7 @@ public class CarView : MonoBehaviour {
 	private bool smoking;
 
 	void Awake(){
-		smokeEmitter = GetComponent <ParticleEmitter> ();
+		smokeEmitter = GetComponent <ParticleSystem> ();
 		carModel = GetComponent <CarModel> ();
 		smoking = false;
 	}
