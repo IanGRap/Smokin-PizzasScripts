@@ -77,7 +77,7 @@ public class CarController : MonoBehaviour {
 	}
 
 	//Used for determining the inputs for the commands
-	void setupCommands(){
+	public void setupCommands(){
 		setupCommand (leftCommand);
 		printArray("left", leftCommand);
 		setupCommand (rightCommand);
