@@ -9,6 +9,7 @@ public class CarModel : MonoBehaviour {
 
 	public float speed;
 	private Vector3 direction;
+	private bool delivering;
 	
 	void Start()
 	{
@@ -19,13 +20,13 @@ public class CarModel : MonoBehaviour {
 	
 	void Update()
 	{
+		delivering = false;
 		transform.Translate(Vector3.right * speed * Time.deltaTime);
 		transform.Rotate(direction);
 	}
 	
 	public void setDirection(string update)
 	{
-		Debug.Log("stuff");
 		if(update == "left")
 			direction = Vector3.forward;
 		if(update == "right")
@@ -39,4 +40,20 @@ public class CarModel : MonoBehaviour {
 	{
 		return control.SpaceDown();
 	}
+	
+	void OnTriggerEnter(Collider trigger)
+	{
+		delivering = true;
+	}
+	
+	public bool isDelivering()
+	{
+		return delivering;
+	}
+	
+	public void goFaster()
+	{
+		speed++;
+	}
+	
 }
