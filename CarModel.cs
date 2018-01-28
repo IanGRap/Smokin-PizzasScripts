@@ -43,7 +43,10 @@ public class CarModel : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider trigger)
 	{
-		delivering = true;
+		if(trigger.tag == "delivery")
+			delivering = true;
+		if(trigger.tag == "boundary")
+			transform.position = trigger.GetComponent<Boundary>().getTargetLoc();
 	}
 	
 	public bool isDelivering()
