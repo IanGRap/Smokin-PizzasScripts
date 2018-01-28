@@ -15,6 +15,7 @@ public class CarController : MonoBehaviour {
 	int[] rightCommand = new int[3];
 	int[] straightCommand = new int[3];
 	public float longLength; //I had this at like 0.2
+	public float timeOut;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,7 @@ public class CarController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+	printList ("stuff", command);
 		if (spaceDown) {
 			if (Input.GetKeyUp (KeyCode.Space)) {
 				spaceDown = false;
@@ -38,6 +40,10 @@ public class CarController : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				spaceDown = true;
 				spaceEnter = Time.time;
+			} else {
+				if(Time.time - spaceExit >= timeOut) {
+					command.Clear();
+				}
 			}
 		}
 	}
@@ -177,7 +183,7 @@ public class CarController : MonoBehaviour {
 	//Prints out a list
 	void printList(string name, List<int> array){
 		string output = name+"[ ";
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < array.Count; i++) {
 			output += array [i];
 			if (i < array.Count - 1)
 				output += ", ";
