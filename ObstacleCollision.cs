@@ -15,6 +15,8 @@ public class ObstacleCollision : MonoBehaviour {
 			CarController carController = collision.gameObject.GetComponent<CarController> ();
 			carController.setupCommands ();
 
+			collision.gameObject.GetComponent <CarView> ().CrashSound ();
+
 			Vector3 direction = collision.gameObject.transform.position - this.gameObject.transform.position;
 			direction = Vector3.Normalize (direction);
 			direction = new Vector3 (direction.x, 0.5f, direction.z);
