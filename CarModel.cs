@@ -28,9 +28,9 @@ public class CarModel : MonoBehaviour {
 	public void setDirection(string update)
 	{
 		if(update == "left")
-			direction = Vector3.up;
-		if(update == "right")
 			direction = Vector3.down;
+		if(update == "right")
+			direction = Vector3.up;
 		if(update == "straight")
 			direction = Vector3.zero;
 		Debug.Log(direction);
