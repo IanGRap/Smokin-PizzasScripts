@@ -79,12 +79,12 @@ public class CarController : MonoBehaviour {
 	//Used for determining the inputs for the commands
 	public void setupCommands(){
 		setupCommand (leftCommand);
-		printArray("left", leftCommand);
 		setupCommand (rightCommand);
-		printArray ("right", rightCommand);
 		setupCommand (straightCommand);
-		printArray ("straight", straightCommand);
 		checkLoop ();
+		printArray("left", leftCommand);
+		printArray ("right", rightCommand);
+		printArray ("straight", straightCommand);
 	}
 
 	//Determines input for an individual command
@@ -120,7 +120,7 @@ public class CarController : MonoBehaviour {
 	}
 
 	//Recursive function for making sure the commands are not identical
-	void checkLoop(){
+	/*void checkLoop(){
 		if (checkForIdenticalCommands (leftCommand, rightCommand)) {
 			setupCommand (leftCommand);
 			checkLoop ();
@@ -144,7 +144,23 @@ public class CarController : MonoBehaviour {
 			checkLoop();
 			
 		}
+	}*/
+	
+	void checkLoop(){
+		if (checkForIdenticalCommands (leftCommand, rightCommand)) {
+			setupCommand (rightCommand);
+			checkLoop ();
+		}
+		if (checkForIdenticalCommands (rightCommand, straightCommand)) {
+			setupCommand (straightCommand);
+			checkLoop ();
+		}
+		if (checkForIdenticalCommands (leftCommand, straightCommand)) {
+			setupCommand (straightCommand);
+			checkLoop ();
+		}
 	}
+
 
 	//Prints out an array
 	void printArray(string name, int[] array){
