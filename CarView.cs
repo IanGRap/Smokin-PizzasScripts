@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CarView : MonoBehaviour {
 
-	public AudioSource smokeSound;
 	public AudioSource crashSource;
 	public AudioSource deliverySource;
 	public AudioSource skreetSource;
+	public AudioSource sizzle;
 	public List <AudioClip> crashSounds = new List <AudioClip> ();
 	public List <AudioClip> deliverySounds = new List <AudioClip> ();
 
@@ -22,14 +22,12 @@ public class CarView : MonoBehaviour {
 	}
 
 	void Update (){
-		if (carModel.SpaceDown () && ! smoking) {
-			smoking = true;
+		if (carModel.SpaceDown () && !sizzle.isPlaying) {
 			//smokeEmitter.Play ();
-			//smokeSound.Play ();
-		} else if (smoking) {
-			smoking = false;
+			sizzle.Play ();
+		} else if (!carModel.SpaceDown() && sizzle.isPlaying) {
 			//smokeEmitter.Pause ();
-			//smokeSound.Stop ();
+			sizzle.Stop ();
 		}
 	}
 
