@@ -11,9 +11,9 @@ public class CarController : MonoBehaviour {
 	float spaceEnter;
 	float spaceExit;
 	List<int> command = new List<int>();
-	int[] leftCommand = new int[4]; // 
-	int[] rightCommand = new int[4];
-	int[] straightCommand = new int[4];
+	int[] leftCommand = new int[3]; // 
+	int[] rightCommand = new int[3];
+	int[] straightCommand = new int[3];
 	public float longLength; //I had this at like 0.2
 
 	// Use this for initialization
@@ -29,7 +29,7 @@ public class CarController : MonoBehaviour {
 				spaceDown = false;
 				spaceExit = Time.time;
 				determineInput ();
-				if (command.Count == 4) {
+				if (command.Count == 3) {
 					determineCommand ();
 				}
 					
@@ -165,7 +165,7 @@ public class CarController : MonoBehaviour {
 	//Prints out an array
 	void printArray(string name, int[] array){
 		string output = name+"[ ";
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 3; i++) {
 			output += array [i];
 			if (i < array.Length - 1)
 				output += ", ";
