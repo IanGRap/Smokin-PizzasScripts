@@ -8,21 +8,29 @@ public class CarModel : MonoBehaviour {
 	CarView view;
 
 	public float speed;
+
 	private Vector3 direction;
 	private bool delivering;
+	private bool onGround;
+	private Rigidbody rb;
 	
 	void Start()
 	{
 		control = GetComponent<CarController>();
 		//view = GetComponent<CarView>();
 		direction = Vector3.zero;
+		rb = GetComponent <Rigidbody> ();
 	}
 	
 	void Update()
 	{
 		delivering = false;
-		transform.Translate(Vector3.right * speed * Time.deltaTime);
-		transform.Rotate(direction);
+		if (onGround) {
+			transform.Translate(Vector3.right * speed * Time.deltaTime);
+			transform.Rotate(direction);
+			//rb.velocity = direction * speed;
+		}
+
 	}
 	
 	public void setDirection(string update)
@@ -58,5 +66,18 @@ public class CarModel : MonoBehaviour {
 	{
 		speed++;
 	}
-	
+
+	void OnCollisionEnter(Collision collision){
+		if (collision.gameObject.tag == "ground")
+			onGround = true;
+	}
+
+	void OnCollisionLeave(Collision collision){
+		if (collision.gameObject.tag == "ground")
+			onGround = false;
+	}
+
+	public void OffGround(){
+		onGround = false;
+	}
 }
