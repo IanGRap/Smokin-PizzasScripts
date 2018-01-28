@@ -7,6 +7,7 @@ public class Manager : MonoBehaviour {
 	public static Manager instance = null;
 
 	public CarModel car;
+	public DeliveryManager delivery;
 	private int score;
 	
 	void Awake () {
@@ -25,6 +26,7 @@ public class Manager : MonoBehaviour {
 		if(car.isDelivering())
 		{
 			addScore();
+			delivery.gotDelivered();
 		}
 	}
 	
